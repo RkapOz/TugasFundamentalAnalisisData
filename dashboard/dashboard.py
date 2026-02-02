@@ -57,7 +57,7 @@ file_path = os.path.join(script_dir, 'all_data.csv')
 all_df = pd.read_csv(file_path)
 
 # Pastikan kolom datetime dibaca sebagai datetime
-datetime_columns = ["order_purchase_timestamp", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
+datetime_columns = ["order_purchase_timestamp", "order_delivered_customer_date", "order_estimated_delivery_date"]
 for column in datetime_columns:
     all_df[column] = pd.to_datetime(all_df[column])
 
@@ -206,5 +206,6 @@ st.pyplot(fig)
 
 
 st.caption('Copyright (c) Dicoding 2026')
+
 
 
