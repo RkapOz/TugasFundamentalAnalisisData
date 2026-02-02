@@ -1,9 +1,9 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
-import os
 
 sns.set(style='dark')
 
@@ -47,9 +47,14 @@ def create_rfm_df(df):
     return rfm_df
 
 # --- Load Data ---
-# Kode ini akan mencari file all_data.csv yang berada satu folder dengan dashboard.py
+# Mengambil lokasi file dashboard.py saat ini
 script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Menambahkan nama file ke alamat folder tersebut
 file_path = os.path.join(script_dir, 'all_data.csv')
+
+# Membaca file dengan alamat lengkap
+all_df = pd.read_csv(file_path)
 
 # Pastikan kolom datetime dibaca sebagai datetime
 datetime_columns = ["order_purchase_timestamp", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
@@ -201,4 +206,5 @@ st.pyplot(fig)
 
 
 st.caption('Copyright (c) Dicoding 2026')
+
 
