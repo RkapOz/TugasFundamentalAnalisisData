@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
+import os
 
 sns.set(style='dark')
 
@@ -46,6 +47,10 @@ def create_rfm_df(df):
     return rfm_df
 
 # --- Load Data ---
+# Kode ini akan mencari file all_data.csv yang berada satu folder dengan dashboard.py
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, 'all_data.csv')
+
 all_df = pd.read_csv("all_data.csv") # Pastikan file ini satu folder dengan dashboard.py
 
 # Pastikan kolom datetime dibaca sebagai datetime
@@ -195,5 +200,6 @@ ax[2].tick_params(axis='x', labelsize=35)
 ax[2].set_xticklabels(ax[2].get_xticklabels(), rotation=45, horizontalalignment='right')
 
 st.pyplot(fig)
+
 
 st.caption('Copyright (c) Dicoding 2026')
